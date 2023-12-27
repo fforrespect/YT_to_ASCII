@@ -14,3 +14,5 @@ def download(from_path, to_path):
         cv2.imwrite(f"{to_path}frame%d.jpg" % frame, image)
         success, image = vid_cap.read()
         frame += 1
+
+    print("All frames created")
