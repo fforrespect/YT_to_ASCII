@@ -6,6 +6,8 @@ from Vars import Global
 
 
 def download(from_path, to_path):
+    print("Downloading frames...")
+
     files = glob.glob(f"{to_path}*")
     for f in files:
         os.remove(f)
@@ -15,7 +17,6 @@ def download(from_path, to_path):
 
     vid_cap = cv2.VideoCapture(file)
     Global.fps = vid_cap.get(cv2.CAP_PROP_FPS)/Global.skip
-    print(Global.fps)
 
     success, image = vid_cap.read()
 
@@ -27,3 +28,6 @@ def download(from_path, to_path):
         frame += 1
 
     print("All frames created")
+    print("FPS:", Global.fps)
+    print("Total frames:", len(os.listdir(Global.frames_fp))-1)
+    print()

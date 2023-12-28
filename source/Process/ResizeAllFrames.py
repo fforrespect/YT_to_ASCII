@@ -8,6 +8,8 @@ all_frames = [x for x in all_frames if x[-4:] == ".jpg"]
 
 
 def process():
+    print("Resizing frames...")
+
     frame = Image.open(Global.frames_fp + all_frames[0])
     size = frame.size
 
@@ -22,3 +24,5 @@ def process():
         frame.save(image_file_path)
 
     print("All frames resized")
+    print("Video resolution:", (new_size_x, new_size_y))
+    print()
