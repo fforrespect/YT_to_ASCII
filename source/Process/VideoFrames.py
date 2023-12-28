@@ -2,7 +2,7 @@ import os
 import glob
 import cv2
 
-from Vars import Global
+from Meta import GlobalVars
 
 
 def download(from_path, to_path):
@@ -16,18 +16,18 @@ def download(from_path, to_path):
     file = from_path
 
     vid_cap = cv2.VideoCapture(file)
-    Global.fps = vid_cap.get(cv2.CAP_PROP_FPS)/Global.skip
+    GlobalVars.fps = vid_cap.get(cv2.CAP_PROP_FPS)/GlobalVars.skip
 
     success, image = vid_cap.read()
 
     frame = 0
     while success:
-        if frame % Global.skip == 0:
-            cv2.imwrite(f"{to_path}frame{int(frame/Global.skip)}.jpg", image)
+        if frame % GlobalVars.skip == 0:
+            cv2.imwrite(f"{to_path}frame{int(frame/GlobalVars.skip)}{GlobalVars.frame_ext}", image)
             success, image = vid_cap.read()
         frame += 1
 
     print("All frames created")
-    print("FPS:", Global.fps)
-    print("Total frames:", len(os.listdir(Global.frames_fp))-1)
+    print("FPS:", GlobalVars.fps)
+    print("Total frames:", len(os.listdir(GlobalVars.frames_fp))-1)
     print()

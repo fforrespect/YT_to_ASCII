@@ -25,6 +25,3 @@ def image_to_string(image_file_path, colours=greys):
                         else image_array / 255 * colour_scale).astype(int)
 
     return "\n".join("".join(colours[val] * 2 for val in row) for row in normalised_image)
-
-# Example usage:
-# image_to_string("path_to_image.jpg", in_place=False)

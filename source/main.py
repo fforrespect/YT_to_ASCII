@@ -1,7 +1,7 @@
 import threading
 
 from Draw import AllFrames
-from Vars.Global import *
+from Meta.GlobalVars import *
 from Process import YTVid, VideoFrames, ResizeAllFrames, Audio
 
 YTVid.download(video_url, video_fp, video_name)
