@@ -11,6 +11,6 @@ strings_fp = "../resources/strings/frame_strings"
 
 fps = 30
 
-skip = 2
+skip = 4
 
 width = 300
