@@ -3,10 +3,10 @@ import time
 import pickle
 
 from Draw import AsciiArt
-from Vars import Global
+from Meta import GlobalVars
 
-all_frames = os.listdir(Global.frames_fp)
-all_frame_nums = [int(x[5:-4]) for x in all_frames if x[-4:] == ".jpg"]
+all_frames = os.listdir(GlobalVars.frames_fp)
+all_frame_nums = [int(x[5:-4]) for x in all_frames if x[-4:] == GlobalVars.frame_ext]
 
 
 def create_strings():
@@ -16,13 +16,13 @@ def create_strings():
 
     for frame_number in range(max(all_frame_nums)):
         # start = time.time()
-        image_file_path = f"{Global.frames_fp}frame{frame_number}.jpg"
+        image_file_path = f"{GlobalVars.frames_fp}frame{frame_number}{GlobalVars.frame_ext}"
 
         frame_strings.append(AsciiArt.image_to_string(image_file_path))
 
-    os.remove(Global.strings_fp)
+    os.remove(GlobalVars.strings_fp)
 
-    strings_file = open(Global.strings_fp, 'ab')
+    strings_file = open(GlobalVars.strings_fp, 'ab')
     pickle.dump(frame_strings, strings_file)
     strings_file.close()
 
@@ -42,7 +42,7 @@ def draw():
     #
     #     # time.sleep(max(1/Global.fps - (time.time() - start), 0))
 
-    strings_file = open(Global.strings_fp, 'rb')
+    strings_file = open(GlobalVars.strings_fp, 'rb')
     frame_strings = pickle.load(strings_file)
     strings_file.close()
 
@@ -50,4 +50,4 @@ def draw():
         start = time.time()
         print("\n"*200)
         print(string)
-        time.sleep(max(1/Global.fps - (time.time() - start), 0))
+        time.sleep(max(1/GlobalVars.fps - (time.time() - start), 0))
