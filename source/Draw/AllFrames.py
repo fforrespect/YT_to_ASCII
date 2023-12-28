@@ -31,17 +31,6 @@ def create_strings():
 
 
 def draw():
-    # frame_strings = []
-    #
-    # for frame_number in range(max(all_frame_nums)):
-    #     # start = time.time()
-    #     image_file_path = f"{Global.frames_fp}frame{frame_number}.jpg"
-    #
-    #     frame_strings.append(AsciiArt.image_to_string(image_file_path))
-    #     # print(("\n"*200) + string)
-    #
-    #     # time.sleep(max(1/Global.fps - (time.time() - start), 0))
-
     strings_file = open(GlobalVars.strings_fp, 'rb')
     frame_strings = pickle.load(strings_file)
     strings_file.close()
