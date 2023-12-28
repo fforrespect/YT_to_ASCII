@@ -31,12 +31,20 @@ def create_strings():
 
 
 def draw():
-    strings_file = open(GlobalVars.strings_fp, 'rb')
-    frame_strings = pickle.load(strings_file)
-    strings_file.close()
+    with open(GlobalVars.strings_fp, 'rb') as strings_file:
+        frame_strings = pickle.load(strings_file)
+
+    frame_time = 1 / GlobalVars.fps
+    next_frame_time = time.time() + frame_time
 
     for string in frame_strings:
-        start = time.time()
-        print("\n"*200)
+        _clear_screen()
         print(string)
-        time.sleep(max(1/GlobalVars.fps - (time.time() - start), 0))
+
+        sleep_time = next_frame_time - time.time()
+        time.sleep(max(sleep_time, 0))
+        next_frame_time += frame_time
+
+
+def _clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')

@@ -1,6 +1,5 @@
 from moviepy.editor import VideoFileClip
-from pydub import AudioSegment
-from pydub import playback
+from pygame import mixer
 
 from Meta import GlobalVars
 
@@ -15,10 +14,7 @@ def create_file():
     print()
 
 
-# def create_clips():
-#     print("Creating audio clips...")
-
-
 def play():
-    audio = AudioSegment.from_mp3(GlobalVars.audio_fp)
-    playback.play(audio)
+    mixer.init()
+    mixer.music.load(GlobalVars.audio_fp)
+    mixer.music.play()
