@@ -1,8 +1,7 @@
 import os
 import time
-import pickle
 
-from Draw import AsciiArt
+from Process import AsciiArt
 from Meta import GlobalVars
 
 all_frames = os.listdir(GlobalVars.frames_fp)
@@ -19,20 +18,20 @@ def create_strings():
         image_file_path = f"{GlobalVars.frames_fp}frame{frame_number}{GlobalVars.frame_ext}"
 
         frame_strings.append(AsciiArt.image_to_string(image_file_path))
+        frame_strings.append("ARBITRARY_DELIMITER")
 
     os.remove(GlobalVars.strings_fp)
 
-    strings_file = open(GlobalVars.strings_fp, 'ab')
-    pickle.dump(frame_strings, strings_file)
-    strings_file.close()
+    with open(GlobalVars.strings_fp, "w") as strings_file:
+        strings_file.writelines(frame_strings)
 
-    print("All frame strings created and pickled")
+    print("All frame strings created and stored")
     print()
 
 
 def draw():
-    with open(GlobalVars.strings_fp, 'rb') as strings_file:
-        frame_strings = pickle.load(strings_file)
+    with open(GlobalVars.strings_fp, "r") as strings_file:
+        frame_strings = "".join(strings_file.readlines()).split("ARBITRARY_DELIMITER")
 
     frame_time = 1 / GlobalVars.fps
     next_frame_time = time.time() + frame_time
