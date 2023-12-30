@@ -1,20 +1,34 @@
-# video_url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-video_url = "https://www.youtube.com/watch?v=VTAPL-xz7HY"
-# video_url = "https://www.youtube.com/watch?v=0yZcDeVsj_Y"
+vars_fp = "../resources/GlobalVars.txt"
 
-video_fp = "../resources/videos/"
-video_name = "video_to_display.mp4"
+var_dict = {}
 
-audio_fp = "../resources/audio/audio_to_play.mp3"
+with open(vars_fp) as vars_file:
+    for line in vars_file.readlines():
+        if line[0] == "#" or len(line) <= 2:
+            continue
+        else:
+            data = line.replace("\n", "").split(" ")
+            print(data)
+            if data[0] == "int":
+                var_dict[data[1]] = int(data[2])
+            elif data[0] == "str":
+                var_dict[data[1]] = str(data[2])[1:-1]
 
-frames_fp = "../resources/frames/"
-frame_ext = ".jpg"
+video_url = var_dict["video_url"]
 
-strings_fp = "../resources/strings/frame_strings"
+video_fp = var_dict["video_fp"]
+video_name = var_dict["video_name"]
+
+audio_fp = var_dict["audio_fp"]
+
+frames_fp = var_dict["frames_fp"]
+frame_ext = var_dict["frame_ext"]
+
+strings_fp = var_dict["strings_fp"]
+
+delimiter = var_dict["delimiter"]
 
 
-fps = 30
-
-skip = 4
-
-width = 300
+fps = var_dict["fps"]
+skip = var_dict["skip"]
+width = var_dict["width"]

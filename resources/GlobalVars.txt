@@ -1,0 +1,25 @@
+# NGGYU
+# str video_url "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+# F1
+# str video_url "https://www.youtube.com/watch?v=VTAPL-xz7HY"
+# 30 secs
+str video_url "https://www.youtube.com/watch?v=0yZcDeVsj_Y"
+
+str video_fp "../resources/videos/"
+str video_name "video_to_display.mp4"
+
+str audio_fp "../resources/audio/audio_to_play.mp3"
+
+str frames_fp "../resources/frames/"
+str frame_ext ".jpg"
+
+str strings_fp "../resources/strings/frame_strings.txt"
+
+str delimiter "ARBITRARY_DELIMITER"
+
+
+int fps 30
+
+int skip 4
+
+int width 300
