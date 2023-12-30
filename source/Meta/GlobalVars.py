@@ -1,7 +1,7 @@
 # Rick Astley
-video_url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+# video_url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 # F1
-# video_url = "https://www.youtube.com/watch?v=VTAPL-xz7HY"
+video_url = "https://www.youtube.com/watch?v=VTAPL-xz7HY"
 # 30 secs
 # video_url = "https://www.youtube.com/watch?v=0yZcDeVsj_Y"
 
@@ -19,8 +19,8 @@ delimiter = "ARBITRARY_DELIMITER"
 
 
 fps = None
-skip = 4
+skip = 2
 
 new_fps = fps/skip if fps is not None else None
 
-width = 300
+width = 700

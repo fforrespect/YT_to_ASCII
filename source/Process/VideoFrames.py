@@ -19,14 +19,19 @@ def download(from_path, to_path):
     GlobalVars.new_fps = GlobalVars.fps / GlobalVars.skip
     total_frames = int(vid_cap.get(CAP_PROP_FRAME_COUNT))
 
-    success, image = vid_cap.read()
+    for frame_number in range(total_frames):
+        success, image = vid_cap.read()
 
-    frame = 0
-    while success:
-        if frame % GlobalVars.skip == 0:
-            cv2.imwrite(f"{to_path}frame{int(frame/GlobalVars.skip)}{GlobalVars.frame_ext}", image)
-            success, image = vid_cap.read()
-        frame += 1
+        if frame_number % GlobalVars.skip == 0:
+            continue
+
+        if not success:
+            break
+
+        imwrite(f"{to_path}frame{int(frame_number/GlobalVars.skip)}{GlobalVars.frame_ext}", image)
+
+    # Release the video capture object
+    vid_cap.release()
 
     print("All frames created")
     print("FPS:", GlobalVars.fps)

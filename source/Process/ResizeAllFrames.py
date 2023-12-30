@@ -4,7 +4,8 @@ from PIL.Image import open
 from Meta import GlobalVars
 
 all_frames = listdir(GlobalVars.frames_fp)
-all_frames = [x for x in all_frames if x[-4:] == GlobalVars.frame_ext][::GlobalVars.skip]
+# all_frames = [x for x in all_frames if x[-4:] == GlobalVars.frame_ext]
+all_frames = list(filter(lambda x: x[-4:] == GlobalVars.frame_ext, all_frames))
 
 
 def process():
