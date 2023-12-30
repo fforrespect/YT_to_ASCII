@@ -4,8 +4,8 @@
 #include <sys/wait.h>
 #include <pthread.h>
 
-#include "audio.h"
-#include "all_frames.h"
+#include "Output/audio.h"
+#include "Output/all_frames.h"
 
 // Thread function prototypes
 void *audioThreadFunc(void *arg);
@@ -21,8 +21,8 @@ int main() {
 
     if (pid == 0) {
         // Child process
-        execlp("python3", "python3", pythonFile, (char *) NULL);
-        exit(EXIT_FAILURE);
+//        execlp("python3", "python3", pythonFile, (char *) NULL);
+//        exit(EXIT_FAILURE);
     } else if (pid > 0) {
         // Parent process
         waitpid(pid, &status, 0);

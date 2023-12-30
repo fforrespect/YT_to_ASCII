@@ -5,7 +5,7 @@ import java.io.*;
 public class AllFrames {
     public static void draw() {
         try {
-            String filePath = "../resources/strings/frame_strings.txt";
+            String filePath = "resources/strings/frame_strings.txt";
             double fps = 30;
             String delimiter = "ARBITRARY_DELIMITER";
 

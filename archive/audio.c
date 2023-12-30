@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include "audio.h"
 
 void playAudio() {

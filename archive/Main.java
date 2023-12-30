@@ -5,7 +5,7 @@ import Output.AllFrames;
 public class Main {
     public static void main(String[] args) {
 
-        String pythonFile = "ProcessAll.py";
+        String pythonFile = "main.py";
 
         try {
             System.out.println("Processing audio and video...");
