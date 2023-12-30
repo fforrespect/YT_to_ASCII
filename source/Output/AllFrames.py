@@ -18,7 +18,7 @@ def create_strings():
         image_file_path = f"{GlobalVars.frames_fp}frame{frame_number}{GlobalVars.frame_ext}"
 
         frame_strings.append(AsciiArt.image_to_string(image_file_path))
-        frame_strings.append("ARBITRARY_DELIMITER")
+        frame_strings.append(GlobalVars.delimiter)
 
     os.remove(GlobalVars.strings_fp)
 
@@ -31,7 +31,7 @@ def create_strings():
 
 def draw():
     with open(GlobalVars.strings_fp, "r") as strings_file:
-        frame_strings = "".join(strings_file.readlines()).split("ARBITRARY_DELIMITER")
+        frame_strings = "".join(strings_file.readlines()).split(GlobalVars.delimiter)
 
     frame_time = 1 / GlobalVars.fps
     next_frame_time = time.time() + frame_time
