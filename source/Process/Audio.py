@@ -1,5 +1,5 @@
 from moviepy.editor import VideoFileClip
-from pygame import mixer
+from pygame.mixer import init, music
 
 from Meta import GlobalVars
 
@@ -15,6 +15,6 @@ def create_file():
 
 
 def play():
-    mixer.init()
-    mixer.music.load(GlobalVars.audio_fp)
-    mixer.music.play()
+    init()
+    music.load(GlobalVars.audio_fp)
+    music.play()
