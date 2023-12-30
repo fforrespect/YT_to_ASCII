@@ -18,11 +18,3 @@ video_thread.start()
 
 audio_thread.join()
 video_thread.join()
-
-
-# TODO:
-#  I think the next thing to do is to take the Audio.play and AllFrames.draw functions,
-#  and move them over to java
-#  .
-#  I think the only main issue at the moment is that the strings arent displaying properly as they should,
-#  so the solution to that would be run it in a faster language
