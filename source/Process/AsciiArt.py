@@ -1,25 +1,23 @@
 from PIL import Image
-from PIL.Image import Image
 from numpy import array, ndarray
 
 greys = (' ', '.', '-', '"', 'r', '/', '>', ')', '[', 'I', 'Y', 'Z', 'h', '#', '8', '@')
 
 
-def image_to_string(image_file_path: str, colours: list[str] = greys) -> str:
+def image_to_string(file_path: str, colours: list[str] = greys) -> str:
     """
     Convert an image to ASCII art.
 
-    Parameters:
-    :type image_file_path: str
-        Path to the image file.
+    :param file_path: Path to the image file.
+    :type file_path: str
+    :param colours: A tuple of characters representing greyscale values.
     :type colours: tuple
-        A tuple of characters representing greyscale values.
 
-    :rtype: str
-        ASCII art representation of the image
+    :returns ASCII art representation of the image
+    :rtype str
     """
 
-    image: Image = Image.open(image_file_path)
+    image: Image.Image = Image.open(file_path)
     # The following line may throw a warning, there's no reason it should - it will always work fine
     # noinspection PyTypeChecker
     image_array: ndarray = array(image)
