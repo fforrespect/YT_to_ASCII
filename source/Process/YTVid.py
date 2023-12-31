@@ -1,7 +1,7 @@
 from pytube import YouTube
 
 
-def download(url, filepath, file_name=None):
+def download(url: str, filepath: str, file_name: str | None = None) -> None:
     print("Downloading video...")
 
     yt_object = YouTube(url)

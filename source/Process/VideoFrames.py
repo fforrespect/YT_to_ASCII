@@ -1,25 +1,28 @@
 from os import listdir, remove
 from glob import glob
-from cv2 import VideoCapture, imwrite, CAP_PROP_FPS, CAP_PROP_FRAME_COUNT
+
+from cv2 import VideoCapture, imwrite, CAP_PROP_FPS, CAP_PROP_FRAME_COUNT, Mat
 
 from Meta import GlobalVars
 
 
-def download(from_path, to_path):
+def download(from_path: str, to_path: str) -> None:
     print("Downloading frames...")
 
-    files = glob(f"{to_path}*")
+    files: list[str] = glob(f"{to_path}*")
     for f in files:
         remove(f)
 
-    file = from_path
+    file: str = from_path
 
-    vid_cap = VideoCapture(file)
+    vid_cap: VideoCapture = VideoCapture(file)
     GlobalVars.fps = vid_cap.get(CAP_PROP_FPS)
     GlobalVars.new_fps = GlobalVars.fps / GlobalVars.skip
-    total_frames = int(vid_cap.get(CAP_PROP_FRAME_COUNT))
+    total_frames: int = int(vid_cap.get(CAP_PROP_FRAME_COUNT))
 
     for frame_number in range(total_frames):
+        success: bool
+        image: Mat
         success, image = vid_cap.read()
 
         if frame_number % GlobalVars.skip == 0:

@@ -1,26 +1,25 @@
 # Rick Astley
-# video_url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+# video_url: str = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 # F1
-video_url = "https://www.youtube.com/watch?v=VTAPL-xz7HY"
+video_url: str = "https://www.youtube.com/watch?v=VTAPL-xz7HY"
 # 30 secs
-# video_url = "https://www.youtube.com/watch?v=0yZcDeVsj_Y"
+# video_url: str = "https://www.youtube.com/watch?v=0yZcDeVsj_Y"
 
-video_fp = "../resources/videos/"
-video_name = "video_to_display.mp4"
+video_fp: str  = "../resources/videos/"
+video_name: str  = "video_to_display.mp4"
 
-audio_fp = "../resources/audio/audio_to_play.mp3"
+audio_fp: str  = "../resources/audio/audio_to_play.mp3"
 
-frames_fp = "../resources/frames/"
-frame_ext = ".jpg"
+frames_fp: str  = "../resources/frames/"
+frame_ext: str  = ".jpg"
 
-strings_fp = "../resources/strings/frame_strings.txt"
+strings_fp: str  = "../resources/strings/frame_strings.txt"
 
-delimiter = "ARBITRARY_DELIMITER"
+delimiter: str  = "ARBITRARY_DELIMITER"
 
 
-fps = None
-skip = 2
+fps: int
+skip: int = 2
+new_fps: float  # will be equal to fps/skip
 
-new_fps = fps/skip if fps is not None else None
-
-width = 700
+width: int = 300
