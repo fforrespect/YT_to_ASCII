@@ -1,6 +1,5 @@
 from os import listdir, remove
 from glob import glob
-
 from cv2 import VideoCapture, imwrite, CAP_PROP_FPS, CAP_PROP_FRAME_COUNT, Mat
 
 from Meta import GlobalVars

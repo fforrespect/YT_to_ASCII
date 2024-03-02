@@ -1,5 +1,4 @@
 from os import listdir
-
 from PIL.Image import open, Image
 
 from Meta import GlobalVars
