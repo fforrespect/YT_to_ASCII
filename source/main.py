@@ -1,6 +1,6 @@
 from threading import Thread
 
-from Meta.GlobalVars import *
+from Meta.Constants import *
 from Output import AllFrames
 from Process import YTVid, VideoFrames, ResizeAllFrames, Audio
 

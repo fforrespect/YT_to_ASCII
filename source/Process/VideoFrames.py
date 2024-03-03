@@ -3,7 +3,7 @@ from glob import glob
 from cv2 import VideoCapture, imwrite, CAP_PROP_FPS, CAP_PROP_FRAME_COUNT, Mat
 from progress.bar import Bar
 
-from Meta import GlobalVars
+from Meta import Constants as c
 
 
 def download(from_path: str, to_path: str) -> None:
@@ -14,13 +14,13 @@ def download(from_path: str, to_path: str) -> None:
     file: str = from_path
 
     vid_cap: VideoCapture = VideoCapture(file)
-    GlobalVars.fps = vid_cap.get(CAP_PROP_FPS)
-    GlobalVars.new_fps = GlobalVars.fps / GlobalVars.skip
+    c.fps = vid_cap.get(CAP_PROP_FPS)
+    c.new_fps = c.fps / c.skip
     total_frames: int = int(vid_cap.get(CAP_PROP_FRAME_COUNT))
 
     bar = Bar(
         "Downloading Frames",
-        max=total_frames//GlobalVars.skip,
+        max=total_frames//c.skip,
         fill='█',
         suffix="%(index)d/%(max)d - %(percent).1f%% - %(eta)ds"
     )
@@ -30,13 +30,13 @@ def download(from_path: str, to_path: str) -> None:
         image: Mat
         success, image = vid_cap.read()
 
-        if frame_number % GlobalVars.skip == 0:
+        if frame_number % c.skip == 0:
             continue
 
         if not success:
             break
 
-        file_path: str = f"{to_path}frame{frame_number//GlobalVars.skip}{GlobalVars.frame_ext}"
+        file_path: str = f"{to_path}frame{frame_number//c.skip}{c.frame_ext}"
 
         try: remove(file_path)
         except FileNotFoundError: pass
@@ -48,7 +48,7 @@ def download(from_path: str, to_path: str) -> None:
 
     bar.finish()
 
-    print(len(listdir(GlobalVars.frames_fp))-1, "frames created")
-    print("Original FPS:", GlobalVars.fps)
-    print("Adjusted FPS:", GlobalVars.new_fps)
+    print(len(listdir(c.frames_fp))-1, "frames created")
+    print("Original FPS:", c.fps)
+    print("Adjusted FPS:", c.new_fps)
     print()

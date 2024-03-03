@@ -3,12 +3,12 @@ from time import time, sleep
 from progress.bar import Bar
 
 from Process.AsciiArt import image_to_string
-from Meta import GlobalVars
+from Meta import Constants as c
 
 
 def create_strings() -> None:
-    all_frames: list[str] = listdir(GlobalVars.frames_fp)
-    all_frame_nums: list[int] = [int(x[5:-4]) for x in all_frames if x[-4:] == GlobalVars.frame_ext]
+    all_frames: list[str] = listdir(c.frames_fp)
+    all_frame_nums: list[int] = [int(x[5:-4]) for x in all_frames if x[-4:] == c.frame_ext]
 
     bar = Bar(
         "Creating frame strings",
@@ -20,16 +20,16 @@ def create_strings() -> None:
     frame_strings: list[str] = []
 
     for frame_number in range(max(all_frame_nums)):
-        image_file_path: str = f"{GlobalVars.frames_fp}frame{frame_number}{GlobalVars.frame_ext}"
+        image_file_path: str = f"{c.frames_fp}frame{frame_number}{c.frame_ext}"
 
         frame_strings.append(image_to_string(image_file_path))
-        frame_strings.append(GlobalVars.delimiter)
+        frame_strings.append(c.delimiter)
 
         bar.next()
 
-    try: remove(GlobalVars.strings_fp)
+    try: remove(c.strings_fp)
     except FileNotFoundError: pass
-    with open(GlobalVars.strings_fp, "w") as strings_file:
+    with open(c.strings_fp, "w") as strings_file:
         strings_file.writelines(frame_strings)
 
     bar.finish()
@@ -38,10 +38,10 @@ def create_strings() -> None:
 
 
 def draw() -> None:
-    with open(GlobalVars.strings_fp, "r") as strings_file:
-        frame_strings: list[str] = "".join(strings_file.readlines()).split(GlobalVars.delimiter)
+    with open(c.strings_fp, "r") as strings_file:
+        frame_strings: list[str] = "".join(strings_file.readlines()).split(c.delimiter)
 
-    frame_time: float = 1 / GlobalVars.new_fps
+    frame_time: float = 1 / c.new_fps
     next_frame_time: float = time() + frame_time
 
     for string in frame_strings:
