@@ -1,2 +1,6 @@
 /resources/
 /.idea/
+/source/Meta/__pycache__/
+/source/Output/__pycache__/
+/source/Process/__pycache__/
+.DS_Store
