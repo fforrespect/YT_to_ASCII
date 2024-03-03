@@ -1,14 +1,19 @@
 from os import listdir
 from PIL.Image import open, Image
+from progress.bar import Bar
 
 from Meta import GlobalVars
 
 
 def process() -> None:
-    print("Resizing frames...")
-
     all_frames: list[str] = listdir(GlobalVars.frames_fp)
     all_frames = list(filter(lambda x: x[-4:] == GlobalVars.frame_ext, all_frames))
+
+    bar = Bar(
+        'Resizing Frames',
+        max=len(all_frames),
+        suffix='%(index)d/%(max)d - %(percent).1f%% - %(eta)ds'
+    )
 
     frame: Image = open(GlobalVars.frames_fp + all_frames[0])
     size: tuple[int, int] = frame.size
@@ -22,6 +27,10 @@ def process() -> None:
         frame = open(image_file_path)
         frame = frame.resize((new_size_x, new_size_y))
         frame.save(image_file_path)
+
+        bar.next()
+
+    bar.finish()
 
     print("All frames resized")
     print("Video resolution:", (new_size_x, new_size_y))
