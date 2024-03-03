@@ -2,7 +2,7 @@ from pytube import YouTube
 
 
 def download(url: str, filepath: str, file_name: str | None = None) -> None:
-    print("Downloading video...")
+    print("\nDownloading video...")
 
     yt_object = YouTube(url)
     yt_object = yt_object.streams.get_highest_resolution()
