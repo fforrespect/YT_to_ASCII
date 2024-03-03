@@ -4,12 +4,12 @@ from time import time, sleep
 from Process.AsciiArt import image_to_string
 from Meta import GlobalVars
 
-all_frames: list[str] = listdir(GlobalVars.frames_fp)
-all_frame_nums: list[int] = [int(x[5:-4]) for x in all_frames if x[-4:] == GlobalVars.frame_ext]
-
 
 def create_strings() -> None:
     print("Creating frame strings...")
+
+    all_frames: list[str] = listdir(GlobalVars.frames_fp)
+    all_frame_nums: list[int] = [int(x[5:-4]) for x in all_frames if x[-4:] == GlobalVars.frame_ext]
 
     frame_strings: list[str] = []
 

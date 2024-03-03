@@ -3,12 +3,12 @@ from PIL.Image import open, Image
 
 from Meta import GlobalVars
 
-all_frames: list[str] = listdir(GlobalVars.frames_fp)
-all_frames = list(filter(lambda x: x[-4:] == GlobalVars.frame_ext, all_frames))
-
 
 def process() -> None:
     print("Resizing frames...")
+
+    all_frames: list[str] = listdir(GlobalVars.frames_fp)
+    all_frames = list(filter(lambda x: x[-4:] == GlobalVars.frame_ext, all_frames))
 
     frame: Image = open(GlobalVars.frames_fp + all_frames[0])
     size: tuple[int, int] = frame.size
