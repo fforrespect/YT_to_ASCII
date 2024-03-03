@@ -25,9 +25,10 @@ def process() -> None:
     for frame_filename in all_frames:
         image_file_path: str = GlobalVars.frames_fp + frame_filename
 
-        remove(image_file_path)
         frame = open(image_file_path)
         frame = frame.resize((new_size_x, new_size_y))
+        try: remove(image_file_path)
+        except FileNotFoundError: pass
         frame.save(image_file_path)
 
         bar.next()

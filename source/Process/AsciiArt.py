@@ -6,7 +6,7 @@ from Meta.PrintColour import get_colour_setter, get_colour_resetter, colours_equ
 greys_ = (' ', '.', '-', '"', 'r', '/', '>', ')', '[', 'I', 'Y', 'Z', 'h', '#', '8', '@')
 
 
-def image_to_string(file_path: str, in_colour: bool = True, greys: list[str] = greys_) -> str:
+def image_to_string(file_path: str, in_colour: bool = False, greys: list[str] = greys_) -> str:
     """
     Convert an image to ASCII art.
 

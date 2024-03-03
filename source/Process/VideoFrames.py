@@ -37,7 +37,9 @@ def download(from_path: str, to_path: str) -> None:
             break
 
         file_path: str = f"{to_path}frame{frame_number//GlobalVars.skip}{GlobalVars.frame_ext}"
-        remove(file_path)
+
+        try: remove(file_path)
+        except FileNotFoundError: pass
         imwrite(file_path, image)
         bar.next()
 

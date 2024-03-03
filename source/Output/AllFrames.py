@@ -27,7 +27,8 @@ def create_strings() -> None:
 
         bar.next()
 
-    remove(GlobalVars.strings_fp)
+    try: remove(GlobalVars.strings_fp)
+    except FileNotFoundError: pass
     with open(GlobalVars.strings_fp, "w") as strings_file:
         strings_file.writelines(frame_strings)
 
