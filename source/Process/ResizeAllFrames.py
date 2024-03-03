@@ -1,4 +1,4 @@
-from os import listdir
+from os import listdir, remove
 from PIL.Image import open, Image
 from progress.bar import Bar
 
@@ -25,6 +25,7 @@ def process() -> None:
     for frame_filename in all_frames:
         image_file_path: str = GlobalVars.frames_fp + frame_filename
 
+        remove(image_file_path)
         frame = open(image_file_path)
         frame = frame.resize((new_size_x, new_size_y))
         frame.save(image_file_path)

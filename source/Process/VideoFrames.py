@@ -36,7 +36,9 @@ def download(from_path: str, to_path: str) -> None:
         if not success:
             break
 
-        imwrite(f"{to_path}frame{int(frame_number/GlobalVars.skip)}{GlobalVars.frame_ext}", image)
+        file_path: str = f"{to_path}frame{frame_number//GlobalVars.skip}{GlobalVars.frame_ext}"
+        remove(file_path)
+        imwrite(file_path, image)
         bar.next()
 
     # Release the video capture object
