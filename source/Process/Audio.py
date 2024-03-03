@@ -7,8 +7,8 @@ from Meta import Constants as c
 def create_file() -> None:
     print("Creating audio file...")
 
-    video: VideoFileClip = VideoFileClip(c.video_fp + c.video_name)
-    video.audio.write_audiofile(c.audio_fp)
+    video: VideoFileClip = VideoFileClip(c.VIDEO_FP + c.VIDEO_NAME)
+    video.audio.write_audiofile(c.AUDIO_FP)
 
     print("Audio file created")
     print()
@@ -16,5 +16,5 @@ def create_file() -> None:
 
 def play() -> None:
     init()
-    music.load(c.audio_fp)
+    music.load(c.AUDIO_FP)
     music.play()

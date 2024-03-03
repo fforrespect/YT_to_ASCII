@@ -5,8 +5,8 @@ from Output import AllFrames
 from Process import YTVid, VideoFrames, ResizeAllFrames, Audio
 
 # Pre-processing
-YTVid.download(video_url, video_fp, video_name)
-VideoFrames.download(video_fp + video_name, frames_fp)
+YTVid.download(VIDEO_URL, VIDEO_FP, VIDEO_NAME)
+VideoFrames.download(VIDEO_FP + VIDEO_NAME, FRAMES_FP)
 ResizeAllFrames.process()
 AllFrames.create_strings()
 Audio.create_file()

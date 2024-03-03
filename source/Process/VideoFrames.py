@@ -14,13 +14,13 @@ def download(from_path: str, to_path: str) -> None:
     file: str = from_path
 
     vid_cap: VideoCapture = VideoCapture(file)
-    c.fps = vid_cap.get(CAP_PROP_FPS)
-    c.new_fps = c.fps / c.skip
+    c.FPS = vid_cap.get(CAP_PROP_FPS)
+    c.NEW_FPS = c.FPS / c.SKIP
     total_frames: int = int(vid_cap.get(CAP_PROP_FRAME_COUNT))
 
     bar = Bar(
         "Downloading Frames",
-        max=total_frames//c.skip,
+        max=total_frames//c.SKIP,
         fill='█',
         suffix="%(index)d/%(max)d - %(percent).1f%% - %(eta)ds"
     )
@@ -30,13 +30,13 @@ def download(from_path: str, to_path: str) -> None:
         image: Mat
         success, image = vid_cap.read()
 
-        if frame_number % c.skip == 0:
+        if frame_number % c.SKIP == 0:
             continue
 
         if not success:
             break
 
-        file_path: str = f"{to_path}frame{frame_number//c.skip}{c.frame_ext}"
+        file_path: str = f"{to_path}frame{frame_number//c.SKIP}{c.FRAME_EXT}"
 
         try: remove(file_path)
         except FileNotFoundError: pass
@@ -48,7 +48,7 @@ def download(from_path: str, to_path: str) -> None:
 
     bar.finish()
 
-    print(len(listdir(c.frames_fp))-1, "frames created")
-    print("Original FPS:", c.fps)
-    print("Adjusted FPS:", c.new_fps)
+    print(len(listdir(c.FRAMES_FP)) - 1, "frames created")
+    print("Original FPS:", c.FPS)
+    print("Adjusted FPS:", c.NEW_FPS)
     print()
