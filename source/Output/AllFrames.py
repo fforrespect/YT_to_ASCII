@@ -1,15 +1,20 @@
 from os import listdir, system, remove
 from time import time, sleep
+from progress.bar import Bar
 
 from Process.AsciiArt import image_to_string
 from Meta import GlobalVars
 
 
 def create_strings() -> None:
-    print("Creating frame strings...")
-
     all_frames: list[str] = listdir(GlobalVars.frames_fp)
     all_frame_nums: list[int] = [int(x[5:-4]) for x in all_frames if x[-4:] == GlobalVars.frame_ext]
+
+    bar = Bar(
+        'Creating frame strings',
+        max=len(all_frames),
+        suffix='%(index)d/%(max)d - %(percent).1f%% - %(eta)ds'
+    )
 
     frame_strings: list[str] = []
 
@@ -19,13 +24,16 @@ def create_strings() -> None:
         frame_strings.append(image_to_string(image_file_path))
         frame_strings.append(GlobalVars.delimiter)
 
+        bar.next()
+
     remove(GlobalVars.strings_fp)
 
     with open(GlobalVars.strings_fp, "w") as strings_file:
         strings_file.writelines(frame_strings)
 
-    print("All frame strings created and stored")
-    print()
+    bar.finish()
+
+    print("All frame strings created and stored\n")
 
 
 def draw() -> None:
