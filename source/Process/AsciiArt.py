@@ -1,12 +1,15 @@
 from PIL import Image
 from numpy import array, ndarray
 
-from Meta.PrintColour import get_colour_setter, get_colour_resetter, colours_equal
+from Meta.PrintColour import get_bg_colour_setter, get_colour_resetter, colours_equal
 
 greys_ = (' ', '.', '-', '"', 'r', '/', '>', ')', '[', 'I', 'Y', 'Z', 'h', '#', '8', '@')
 
+reset: str = get_colour_resetter()
+fill_string: str = " "*2
 
-def image_to_string(file_path: str, in_colour: bool = False, greys: list[str] = greys_) -> str:
+
+def image_to_string(file_path: str, in_colour: bool = True, greys: list[str] = greys_) -> str:
     """
     Convert an image to ASCII art.
 
@@ -25,22 +28,19 @@ def image_to_string(file_path: str, in_colour: bool = False, greys: list[str] = 
     image_array: ndarray = array(image)
 
     if in_colour:
-        reset: str = get_colour_resetter()
-        fill_string: str = greys[-1]*2
-
-        row_strs: list[str] = [
+        out: str = "\n".join([
             "".join([
                 (
-                    "".join([reset, get_colour_setter(pixel_colour), fill_string])
+                    "".join([get_bg_colour_setter(pixel_colour), fill_string])
                     if current_colour is None or not colours_equal(pixel_colour, current_colour)
                     else fill_string
                 )
                 for pixel_colour, current_colour in zip(row, [None] + list(row[:-1]))
-            ] + [reset])
+            ])
             for row in image_array
-        ]
+        ])
 
-        return "\n".join(row_strs)
+        return "".join([out, reset])
 
     else:
         greyscale: bool = len(image_array.shape) == 2
