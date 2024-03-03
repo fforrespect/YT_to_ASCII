@@ -21,8 +21,8 @@ def download(from_path: str, to_path: str) -> None:
     bar = Bar(
         "Downloading Frames",
         max=total_frames//c.SKIP,
-        fill='█',
-        suffix="%(index)d/%(max)d - %(percent).1f%% - %(eta)ds"
+        fill=c.LOADING_BAR_FILL,
+        suffix=c.LOADING_BAR_SUFFIX
     )
 
     for frame_number in range(total_frames):

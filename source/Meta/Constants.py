@@ -11,17 +11,20 @@
 VIDEO_URL: str = "https://www.youtube.com/watch?v=9HQzRxmr87s"
 
 
-VIDEO_FP: str  = "../resources/videos/"
-VIDEO_NAME: str  = "video_to_display.mp4"
+VIDEO_FP: str = "../resources/videos/"
+VIDEO_NAME: str = "video_to_display.mp4"
 
-AUDIO_FP: str  = "../resources/audio/audio_to_play.mp3"
+AUDIO_FP: str = "../resources/audio/audio_to_play.mp3"
 
-FRAMES_FP: str  = "../resources/frames/"
-FRAME_EXT: str  = ".jpg"
+FRAMES_FP: str = "../resources/frames/"
+FRAME_EXT: str = ".jpg"
 
-STRINGS_FP: str  = "../resources/strings/frame_strings.txt"
+STRINGS_FP: str = "../resources/strings/frame_strings.txt"
 
-DELIMITER: str  = "ARBITRARY_DELIMITER"
+DELIMITER: str = "ARBITRARY_DELIMITER"
+
+LOADING_BAR_FILL: str = '█'
+LOADING_BAR_SUFFIX: str = "%(index)d/%(max)d - %(percent).1f%% - %(eta)ds"
 
 
 FPS: int

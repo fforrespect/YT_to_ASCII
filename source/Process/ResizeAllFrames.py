@@ -12,8 +12,8 @@ def process() -> None:
     bar = Bar(
         "Resizing Frames",
         max=len(all_frames),
-        fill='█',
-        suffix="%(index)d/%(max)d - %(percent).1f%% - %(eta)ds"
+        fill=c.LOADING_BAR_FILL,
+        suffix=c.LOADING_BAR_SUFFIX
     )
 
     frame: Image = open(c.FRAMES_FP + all_frames[0])

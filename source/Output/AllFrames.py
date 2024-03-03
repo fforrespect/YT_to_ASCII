@@ -13,8 +13,8 @@ def create_strings() -> None:
     bar = Bar(
         "Creating frame strings",
         max=len(all_frames),
-        fill='█',
-        suffix="%(index)d/%(max)d - %(percent).1f%% - %(eta)ds"
+        fill=c.LOADING_BAR_FILL,
+        suffix=c.LOADING_BAR_SUFFIX
     )
 
     frame_strings: list[str] = []
