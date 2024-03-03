@@ -46,8 +46,8 @@ def image_to_string(file_path: str, in_colour: bool = True, greys: list[str] = g
         greyscale: bool = len(image_array.shape) == 2
 
         colour_scale: int = len(greys) - 1
-        normalised_image: ndarray[int] = ndarray[int]((image_array.mean(axis=2) / 255 * colour_scale if not greyscale
-                                                       else image_array / 255 * colour_scale).astype(int))
+        normalised_image: ndarray = (image_array.mean(axis=2) / 255 * colour_scale if not greyscale
+                                     else image_array / 255 * colour_scale).astype(int)
 
         return "\n".join("".join(greys[val] * 2 for val in row) for row in normalised_image)
 
