@@ -36,5 +36,6 @@ def process() -> None:
     bar.finish()
 
     print("All frames resized")
-    print("Video resolution:", (new_size_x, new_size_y))
+    print(f"Original resolution: {size[0]} x {size[1]}")
+    print(f"New resolution: {new_size_x} x {new_size_y}")
     print()

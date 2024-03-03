@@ -49,6 +49,6 @@ def download(from_path: str, to_path: str) -> None:
     bar.finish()
 
     print(len(listdir(c.FRAMES_FP)) - 1, "frames created")
-    print("Original FPS:", c.FPS)
-    print("Adjusted FPS:", c.NEW_FPS)
+    print("Original FPS:", round(c.FPS, 2))
+    print("Adjusted FPS:", round(c.NEW_FPS, 2))
     print()
