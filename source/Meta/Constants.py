@@ -1,8 +1,8 @@
-# Rick Astley
+# -- Rick Astley --
 # VIDEO_URL: str = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-# F1
+# -- F1 --
 VIDEO_URL: str = "https://www.youtube.com/watch?v=VTAPL-xz7HY"
-# 30 secs
+# -- 30 secs --
 # VIDEO_URL: str = "https://www.youtube.com/watch?v=0yZcDeVsj_Y"
 
 VIDEO_FP: str  = "../resources/videos/"
