@@ -11,9 +11,10 @@ def create_strings() -> None:
     all_frame_nums: list[int] = [int(x[5:-4]) for x in all_frames if x[-4:] == GlobalVars.frame_ext]
 
     bar = Bar(
-        'Creating frame strings',
+        "Creating frame strings",
         max=len(all_frames),
-        suffix='%(index)d/%(max)d - %(percent).1f%% - %(eta)ds'
+        fill='█',
+        suffix="%(index)d/%(max)d - %(percent).1f%% - %(eta)ds"
     )
 
     frame_strings: list[str] = []

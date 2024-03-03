@@ -10,9 +10,10 @@ def process() -> None:
     all_frames = list(filter(lambda x: x[-4:] == GlobalVars.frame_ext, all_frames))
 
     bar = Bar(
-        'Resizing Frames',
+        "Resizing Frames",
         max=len(all_frames),
-        suffix='%(index)d/%(max)d - %(percent).1f%% - %(eta)ds'
+        fill='█',
+        suffix="%(index)d/%(max)d - %(percent).1f%% - %(eta)ds"
     )
 
     frame: Image = open(GlobalVars.frames_fp + all_frames[0])

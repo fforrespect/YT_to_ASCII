@@ -19,9 +19,10 @@ def download(from_path: str, to_path: str) -> None:
     total_frames: int = int(vid_cap.get(CAP_PROP_FRAME_COUNT))
 
     bar = Bar(
-        'Downloading Frames',
+        "Downloading Frames",
         max=total_frames//GlobalVars.skip,
-        suffix='%(index)d/%(max)d - %(percent).1f%% - %(eta)ds'
+        fill='█',
+        suffix="%(index)d/%(max)d - %(percent).1f%% - %(eta)ds"
     )
 
     for frame_number in range(total_frames):
