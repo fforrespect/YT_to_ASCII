@@ -45,6 +45,6 @@ def printc(text: str,
 
 if __name__ == "__main__":
     printc("test")
-    printc("test", (255,   0, 0))
-    printc("test", background_colour=(255,   0, 0))
-    printc("test", (255,   0,   0), (  0,   0, 255))
+    printc("test", (255, 0, 0))
+    printc("test", background_colour=(255, 0, 0))
+    printc("test", (255, 0, 0), (0, 0, 255))
