@@ -1,6 +1,6 @@
 from os import listdir, remove
 from PIL.Image import open, Image
-from progress.bar import Bar
+from progress.bar import ChargingBar
 
 from Meta import Constants as c
 
@@ -9,7 +9,7 @@ def process() -> None:
     all_frames: list[str] = listdir(c.FRAMES_FP)
     all_frames = list(filter(lambda x: x[-4:] == c.FRAME_EXT, all_frames))
 
-    bar = Bar(
+    bar = ChargingBar(
         "Resizing Frames",
         max=len(all_frames),
         fill=c.LOADING_BAR_FILL,

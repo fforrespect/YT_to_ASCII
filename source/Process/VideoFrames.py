@@ -1,7 +1,7 @@
 from os import listdir, remove
 from glob import glob
 from cv2 import VideoCapture, imwrite, CAP_PROP_FPS, CAP_PROP_FRAME_COUNT, Mat
-from progress.bar import Bar
+from progress.bar import ChargingBar
 
 from Meta import Constants as c
 
@@ -18,7 +18,7 @@ def download(from_path: str, to_path: str) -> None:
     c.NEW_FPS = c.FPS / c.SKIP
     total_frames: int = int(vid_cap.get(CAP_PROP_FRAME_COUNT))
 
-    bar = Bar(
+    bar = ChargingBar(
         "Downloading Frames",
         max=total_frames//c.SKIP,
         fill=c.LOADING_BAR_FILL,
@@ -30,7 +30,7 @@ def download(from_path: str, to_path: str) -> None:
         image: Mat
         success, image = vid_cap.read()
 
-        if frame_number % c.SKIP == 0:
+        if frame_number % c.SKIP != 0:
             continue
 
         if not success:
@@ -49,6 +49,9 @@ def download(from_path: str, to_path: str) -> None:
     bar.finish()
 
     print(len(listdir(c.FRAMES_FP)) - 1, "frames created")
-    print("Original FPS:", round(c.FPS, 2))
-    print("Adjusted FPS:", round(c.NEW_FPS, 2))
+    if c.SKIP != 1:
+        print("Original FPS:", round(c.FPS, 2))
+        print("Adjusted FPS:", round(c.NEW_FPS, 2))
+    else:
+        print("FPS:", round(c.FPS, 2))
     print()

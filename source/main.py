@@ -13,7 +13,7 @@ Audio.create_file()
 
 input("Press enter to play video... ")
 
-# Playing video
+# Play video
 audio_thread: Thread = Thread(target=Audio.play)
 video_thread: Thread = Thread(target=AllFrames.draw)
 

@@ -1,6 +1,6 @@
 from os import listdir, system, remove
 from time import time, sleep
-from progress.bar import Bar
+from progress.bar import ChargingBar
 
 from Process.AsciiArt import image_to_string
 from Meta import Constants as c
@@ -10,9 +10,9 @@ def create_strings() -> None:
     all_frames: list[str] = listdir(c.FRAMES_FP)
     all_frame_nums: list[int] = [int(x[5:-4]) for x in all_frames if x[-4:] == c.FRAME_EXT]
 
-    bar = Bar(
+    bar = ChargingBar(
         "Creating frame strings",
-        max=len(all_frames),
+        max=len(all_frame_nums),
         fill=c.LOADING_BAR_FILL,
         suffix=c.LOADING_BAR_SUFFIX
     )
