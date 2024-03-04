@@ -42,6 +42,7 @@ def create_strings() -> None:
 def draw() -> None:
     with open(c.STRINGS_FP, "r") as strings_file:
         frame_strings: list[str] = "".join(strings_file.readlines()).split(c.DELIMITER)
+    remove(c.STRINGS_FP)
 
     frame_time: float = 1 / c.NEW_FPS
     next_frame_time: float = time() + frame_time
