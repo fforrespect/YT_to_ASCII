@@ -14,7 +14,7 @@ VIDEO_URL: str = "https://www.youtube.com/watch?v=VTAPL-xz7HY"
 VIDEO_FP: str = "../resources/videos/"
 VIDEO_NAME: str = "video_to_display.mp4"
 
-AUDIO_FP: str = "../resources/audio/audio_to_play.mp3"
+AUDIO_FP: str = "../resources/audio/yt_video_audio.mp3"
 
 FRAMES_FP: str = "../resources/frames/"
 FRAME_EXT: str = ".jpg"
