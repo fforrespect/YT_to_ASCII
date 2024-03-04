@@ -25,6 +25,8 @@ def create_strings() -> None:
         frame_strings.append(image_to_string(image_file_path))
         frame_strings.append(c.DELIMITER)
 
+        remove(image_file_path)
+
         bar.next()
 
     try: remove(c.STRINGS_FP)
