@@ -1,4 +1,4 @@
-from typing import Optional
+# from typing import Optional
 
 color_cache = {}
 
@@ -19,8 +19,8 @@ def colours_equal(colour1: tuple[int, int, int], colour2: tuple[int, int, int]) 
     return _rgb_to_256colour(colour1) == _rgb_to_256colour(colour2)
 
 
-def get_text_colour_setter(colour: tuple[int, int, int]) -> str:
-    return f"\033[38;5;{_rgb_to_256colour(colour)}m"
+# def get_text_colour_setter(colour: tuple[int, int, int]) -> str:
+#     return f"\033[38;5;{_rgb_to_256colour(colour)}m"
 
 
 def get_bg_colour_setter(colour: tuple[int, int, int]) -> str:
@@ -31,22 +31,22 @@ def get_colour_resetter() -> str:
     return "\033[0m"
 
 
-def get_coloured_string(text: str,
-                        text_colour: Optional[tuple[int, int, int]] = None,
-                        background_colour: Optional[tuple[int, int, int]] = None) -> str:
-    set_text_colour: str = get_text_colour_setter(text_colour) if text_colour is not None else ""
-    set_bg_colour: str = get_bg_colour_setter(background_colour) if background_colour is not None else ""
-    return f"{set_text_colour}{set_bg_colour}{text}{get_colour_resetter()}"
-
-
-def printc(text: str,
-           text_colour: Optional[tuple[int, int, int]] = None,
-           background_colour: Optional[tuple[int, int, int]] = None) -> None:
-    print(get_coloured_string(text, text_colour, background_colour))
-
-
-if __name__ == "__main__":
-    printc("test")
-    printc("test", (255, 0, 0))
-    printc("test", background_colour=(255, 0, 0))
-    printc("test", (255, 0, 0), (0, 0, 255))
+# def get_coloured_string(text: str,
+#                         text_colour: Optional[tuple[int, int, int]] = None,
+#                         background_colour: Optional[tuple[int, int, int]] = None) -> str:
+#     set_text_colour: str = get_text_colour_setter(text_colour) if text_colour is not None else ""
+#     set_bg_colour: str = get_bg_colour_setter(background_colour) if background_colour is not None else ""
+#     return f"{set_text_colour}{set_bg_colour}{text}{get_colour_resetter()}"
+#
+#
+# def printc(text: str,
+#            text_colour: Optional[tuple[int, int, int]] = None,
+#            background_colour: Optional[tuple[int, int, int]] = None) -> None:
+#     print(get_coloured_string(text, text_colour, background_colour))
+#
+#
+# if __name__ == "__main__":
+#     printc("test")
+#     printc("test", (255, 0, 0))
+#     printc("test", background_colour=(255, 0, 0))
+#     printc("test", (255, 0, 0), (0, 0, 255))
