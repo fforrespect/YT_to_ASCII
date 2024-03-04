@@ -1,7 +1,8 @@
+from typing import Optional
 from pytube import YouTube
 
 
-def download(url: str, filepath: str, file_name: str | None = None) -> None:
+def download(url: str, filepath: str, file_name: Optional[str] = None) -> None:
     print("\nDownloading video...")
 
     yt_object = YouTube(url)

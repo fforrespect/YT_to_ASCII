@@ -1,3 +1,5 @@
+from typing import Optional
+
 color_cache = {}
 
 
@@ -30,16 +32,16 @@ def get_colour_resetter() -> str:
 
 
 def get_coloured_string(text: str,
-                        text_colour: tuple[int, int, int] | None = None,
-                        background_colour: tuple[int, int, int] | None = None) -> str:
+                        text_colour: Optional[tuple[int, int, int]] = None,
+                        background_colour: Optional[tuple[int, int, int]] = None) -> str:
     set_text_colour: str = get_text_colour_setter(text_colour) if text_colour is not None else ""
     set_bg_colour: str = get_bg_colour_setter(background_colour) if background_colour is not None else ""
     return f"{set_text_colour}{set_bg_colour}{text}{get_colour_resetter()}"
 
 
 def printc(text: str,
-           text_colour: tuple[int, int, int] | None = None,
-           background_colour: tuple[int, int, int] | None = None) -> None:
+           text_colour: Optional[tuple[int, int, int]] = None,
+           background_colour: Optional[tuple[int, int, int]] = None) -> None:
     print(get_coloured_string(text, text_colour, background_colour))
 
 
