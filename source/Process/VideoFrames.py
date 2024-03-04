@@ -38,8 +38,6 @@ def download(from_path: str, to_path: str) -> None:
 
         file_path: str = f"{to_path}frame{frame_number//c.SKIP}{c.FRAME_EXT}"
 
-        try: remove(file_path)
-        except FileNotFoundError: pass
         imwrite(file_path, image)
         bar.next()
 
