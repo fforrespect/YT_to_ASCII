@@ -1,5 +1,7 @@
+from os import remove
 from moviepy.video.io.VideoFileClip import VideoFileClip
-from pygame.mixer import init, music
+from pygame import mixer
+from pygame.mixer import music
 
 from Meta import Constants as c
 
@@ -15,6 +17,8 @@ def create_file() -> None:
 
 
 def play() -> None:
-    init()
+    mixer.init()
     music.load(c.AUDIO_FP)
     music.play()
+
+    remove(c.AUDIO_FP)

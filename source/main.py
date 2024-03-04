@@ -1,4 +1,3 @@
-from os import remove
 from threading import Thread
 
 from Meta.Constants import *
@@ -24,5 +23,3 @@ video_thread.start()
 # End
 audio_thread.join()
 video_thread.join()
-
-remove(AUDIO_FP)
