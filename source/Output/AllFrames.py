@@ -57,4 +57,5 @@ def draw() -> None:
 
 
 # def _clear_screen() -> None:
+#     # 'nt' being Windows, 'clear' works for all other OSs
 #     system('cls' if name == 'nt' else 'clear')
