@@ -1,4 +1,5 @@
 from os import listdir, system, remove
+from sys import stdout
 from time import time, sleep
 from progress.bar import ChargingBar
 
@@ -49,7 +50,9 @@ def draw() -> None:
 
     for string in frame_strings:
         system("clear")  # _clear_screen()
-        print(string)
+        # print(string, flush=True)
+        stdout.write(string)
+        stdout.flush()
 
         sleep_time: float = next_frame_time - time()
         sleep(max(sleep_time, 0))

@@ -11,6 +11,7 @@ def create_file() -> None:
 
     video: VideoFileClip = VideoFileClip(c.VIDEO_FP + c.VIDEO_NAME)
     video.audio.write_audiofile(c.AUDIO_FP)
+    remove(c.VIDEO_FP + c.VIDEO_NAME)
 
     print("Audio file created")
     print()

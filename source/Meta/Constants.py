@@ -2,13 +2,13 @@
 # VIDEO_URL: str = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 
 # -- F1 --
-VIDEO_URL: str = "https://www.youtube.com/watch?v=VTAPL-xz7HY"
+# VIDEO_URL: str = "https://www.youtube.com/watch?v=VTAPL-xz7HY"
 
 # -- 30 secs --
 # VIDEO_URL: str = "https://www.youtube.com/watch?v=0yZcDeVsj_Y"
 
 # -- Nyan Cat 5 secs --
-# VIDEO_URL: str = "https://www.youtube.com/watch?v=9HQzRxmr87s"
+VIDEO_URL: str = "https://www.youtube.com/watch?v=9HQzRxmr87s"
 
 
 VIDEO_FP: str = "../resources/videos/"
