@@ -1,12 +1,12 @@
 from PIL import Image
 from numpy import array, ndarray
 
-from Meta.PrintColour import get_bg_colour_setter, get_colour_resetter, colours_equal
+from Meta.ColourTools import get_bg_colour_setter, get_colour_resetter, colours_equal
 
 greys_ = (' ', '.', '-', '"', 'r', '/', '>', ')', '[', 'I', 'Y', 'Z', 'h', '#', '8', '@')
 
 reset: str = get_colour_resetter()
-fill_string: str = " "*2
+fill_char: str = " "*2
 
 
 def image_to_string(file_path: str, in_colour: bool = True, greys: list[str] = greys_) -> str:
@@ -31,9 +31,9 @@ def image_to_string(file_path: str, in_colour: bool = True, greys: list[str] = g
         out: str = "\n".join([
             "".join([
                 (
-                    "".join([get_bg_colour_setter(pixel_colour), fill_string])
+                    "".join([get_bg_colour_setter(pixel_colour), fill_char])
                     if current_colour is None or not colours_equal(pixel_colour, current_colour)
-                    else fill_string
+                    else fill_char
                 )
                 for pixel_colour, current_colour in zip(row, [None] + list(row[:-1]))
             ])
