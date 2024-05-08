@@ -4,7 +4,7 @@ from time import time, sleep
 from progress.bar import ChargingBar
 
 from Process.AsciiArt import image_to_string
-from Meta import Constants as c, GlobalVars as gv
+from Meta import Constants as c, GlobalVars as gv, File
 
 
 def create_strings() -> None:
@@ -30,8 +30,7 @@ def create_strings() -> None:
 
         bar.next()
         
-    try: remove(c.STRINGS_FP)
-    except FileNotFoundError: pass
+    File.delete_if_extant(c.STRINGS_FP)
     with open(c.STRINGS_FP, "w") as strings_file:
         strings_file.writelines(frame_strings)
 

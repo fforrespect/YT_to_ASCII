@@ -2,7 +2,7 @@ from os import listdir, remove
 from PIL.Image import open, Image
 from progress.bar import ChargingBar
 
-from Meta import Constants as c
+from Meta import Constants as c, File
 
 
 def process() -> None:
@@ -27,8 +27,7 @@ def process() -> None:
 
         frame = open(image_file_path)
         frame = frame.resize((new_size_x, new_size_y))
-        try: remove(image_file_path)
-        except FileNotFoundError: pass
+        File.delete_if_extant(image_file_path)
         frame.save(image_file_path)
 
         bar.next()
