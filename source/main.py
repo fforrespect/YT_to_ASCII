@@ -1,8 +1,13 @@
 from threading import Thread
+import sys
 
-from Meta.Constants import *
 from Output import AllFrames
-from Process import YTVid, VideoFrames, ResizeAllFrames, Audio
+from Process import YTVid, VideoFrames, ResizeAllFrames, Audio, Compression
+from Meta.Constants import *
+from Meta import GlobalVars as gv
+
+if len(sys.argv) > 1 and sys.argv[1].isnumeric():
+	gv.destructive = bool(sys.argv[1])
 
 # Pre-processing
 YTVid.download(VIDEO_URL, VIDEO_FP, VIDEO_NAME)

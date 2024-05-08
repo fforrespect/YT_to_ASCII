@@ -4,7 +4,7 @@ from time import time, sleep
 from progress.bar import ChargingBar
 
 from Process.AsciiArt import image_to_string
-from Meta import Constants as c
+from Meta import Constants as c, GlobalVars as gv
 
 
 def create_strings() -> None:
@@ -29,7 +29,7 @@ def create_strings() -> None:
         remove(image_file_path)
 
         bar.next()
-
+        
     try: remove(c.STRINGS_FP)
     except FileNotFoundError: pass
     with open(c.STRINGS_FP, "w") as strings_file:
@@ -43,7 +43,9 @@ def create_strings() -> None:
 def draw() -> None:
     with open(c.STRINGS_FP, "r") as strings_file:
         frame_strings: list[str] = "".join(strings_file.readlines()).split(c.DELIMITER)
-    remove(c.STRINGS_FP)
+    
+    if gv.destructive:
+        remove(c.STRINGS_FP)
 
     frame_time: float = 1 / c.NEW_FPS
     next_frame_time: float = time() + frame_time
