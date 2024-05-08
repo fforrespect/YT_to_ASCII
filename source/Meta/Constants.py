@@ -12,7 +12,7 @@ VIDEO_URL: str = "https://www.youtube.com/watch?v=9HQzRxmr87s"
 
 
 VIDEO_FP: str = "../resources/videos/"
-VIDEO_NAME: str = "video_to_display.mp4"
+VIDEO_NAME: str = "video_to_process.mp4"
 
 AUDIO_FP: str = "../resources/audio/yt_video_audio.mp3"
 
