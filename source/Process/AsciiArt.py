@@ -40,7 +40,7 @@ def image_to_string(file_path: str, in_colour: bool = True, greys: list[str] = g
             for row in image_array
         ])
 
-        return "".join([out, reset])
+        return out
 
     else:
         greyscale: bool = len(image_array.shape) == 2
