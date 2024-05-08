@@ -8,18 +8,22 @@
 # VIDEO_URL: str = "https://www.youtube.com/watch?v=0yZcDeVsj_Y"
 
 # -- Nyan Cat 5 secs --
-VIDEO_URL: str = "https://www.youtube.com/watch?v=9HQzRxmr87s"
+# VIDEO_URL: str = "https://www.youtube.com/watch?v=9HQzRxmr87s"
 
+# -- Road Work Ahead --
+VIDEO_URL: str = "https://www.youtube.com/watch?v=9sPthPleEKo"
 
-VIDEO_FP: str = "../resources/videos/"
+RESOURCES_FP: str = "../resources/"
+
+VIDEO_FP: str = f"{RESOURCES_FP}videos/"
 VIDEO_NAME: str = "video_to_process.mp4"
 
-AUDIO_FP: str = "../resources/audio/yt_video_audio.mp3"
+AUDIO_FP: str = f"{RESOURCES_FP}audio/yt_video_audio.mp3"
 
-FRAMES_FP: str = "../resources/frames/"
+FRAMES_FP: str = f"{RESOURCES_FP}frames/"
 FRAME_EXT: str = ".jpg"
 
-STRINGS_FP: str = "../resources/strings/frame_strings.txt"
+STRINGS_FP: str = f"{RESOURCES_FP}strings/frame_strings.txt"
 
 DELIMITER: str = "ARBITRARY_DELIMITER"
 

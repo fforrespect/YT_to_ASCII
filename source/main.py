@@ -4,16 +4,19 @@ import sys
 from Output import AllFrames
 from Process import YTVid, VideoFrames, ResizeAllFrames, Audio, Compression
 from Meta.Constants import *
-from Meta import GlobalVars as gv
+from Meta import File
 
-if len(sys.argv) > 1 and sys.argv[1].isnumeric():
-	gv.destructive = bool(sys.argv[1])
+File.check_is_destructive(sys.argv)
 
 # Pre-processing
+File.delete_all()
 YTVid.download(VIDEO_URL, VIDEO_FP, VIDEO_NAME)
 VideoFrames.download(VIDEO_FP + VIDEO_NAME, FRAMES_FP)
 ResizeAllFrames.process()
 AllFrames.create_strings()
+# compressed_frames: list[list[list[tuple[int, int]]]] = Compression.compress_colours()
+# Compression.decompress_and_draw(compressed_frames)
+# quit()
 Audio.create_file()
 
 input("Press enter to play video... ")
