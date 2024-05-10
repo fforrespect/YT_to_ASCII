@@ -20,7 +20,7 @@ def create_strings() -> None:
 
     frame_strings: list[str] = []
 
-    for frame_number in range(max(all_frame_nums)):
+    for frame_number in range(max(all_frame_nums)+1):
         image_file_path: str = f"{c.FRAMES_FP}frame{frame_number}{c.FRAME_EXT}"
 
         frame_strings.append(image_to_string(image_file_path))
