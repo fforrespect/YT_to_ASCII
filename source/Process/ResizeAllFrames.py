@@ -2,7 +2,7 @@ from os import listdir, remove
 from PIL.Image import open, Image
 from progress.bar import ChargingBar
 
-from Meta import Constants as c, File
+from Meta import Constants as c, GlobalVars as gv, File
 
 
 def process() -> None:
@@ -21,6 +21,8 @@ def process() -> None:
 
     new_size_x: int = c.DISPLAY_WIDTH
     new_size_y: int = round(size[1]/(size[0]/new_size_x))
+    
+    gv.display_height = new_size_y
 
     for frame_filename in all_frames:
         image_file_path: str = c.FRAMES_FP + frame_filename

@@ -3,15 +3,14 @@ from glob import glob
 from cv2 import VideoCapture, imwrite, CAP_PROP_FPS, CAP_PROP_FRAME_COUNT, Mat
 from progress.bar import ChargingBar
 
-from Meta import Constants as c, GlobalVars as gv
+from Meta import Constants as c
 
 
 def download(from_path: str, to_path: str) -> None:
     files: list[str] = glob(f"{to_path}*")
     
-    if gv.destructive:
-        for f in files:
-            remove(f)
+    for f in files:
+        remove(f)
 
     file: str = from_path
 

@@ -1,19 +1,20 @@
 from PIL import Image
 from numpy import array, ndarray
 
-from Meta.ColourTools import get_bg_colour_setter, get_colour_resetter, colours_equal
+from Meta.ColourTools import *
+from Meta import Constants as c
 
 greys_ = (' ', '.', '-', '"', 'r', '/', '>', ')', '[', 'I', 'Y', 'Z', 'h', '#', '8', '@')
 
 reset: str = get_colour_resetter()
-fill_char: str = " " * 2
+fill_char: str = c.FILL_CHAR
 
 
 def image_to_string(
         file_path: str,
         in_colour: bool = True,
         greys: list[str] = greys_,
-        compressed: bool = True) -> str:
+        compressed: bool = False) -> str:
     """
     Convert an image to ASCII art.
 
@@ -29,21 +30,30 @@ def image_to_string(
     :returns ASCII art representation of the image
     :rtype str
     """
-
+    
     image: Image.Image = Image.open(file_path)
     image_array: ndarray = array(image)
     
     if in_colour:
-        output = "\n".join([
-            "".join([
-                (
-                    "".join([get_bg_colour_setter(pixel_colour), fill_char])
-                    if not compressed and
-                       (current_colour is None or not colours_equal(pixel_colour, current_colour))
-                    else fill_char
-                ) for pixel_colour, current_colour in zip(row, [None] + list(row[:-1]))
-            ]) for row in image_array
-        ])
+        if compressed:
+            output = "\n".join([
+                "".join([
+                    (
+                        "".join([get_bg_colour_setter(pixel_colour), fill_char])
+                        if current_colour is None or not colours_equal(pixel_colour, current_colour)
+                        else fill_char
+                    )
+                    for pixel_colour, current_colour in zip(row, [None] + list(row[:-1]))
+                ])
+                for row in image_array
+            ])
+            
+        else:
+            output = "\n".join([
+                "".join([
+                    ("".join([get_bg_colour_setter(pixel_colour), fill_char])) for pixel_colour in row
+                ]) for row in image_array
+            ])
     
     else:
         greyscale: bool = len(image_array.shape) == 2

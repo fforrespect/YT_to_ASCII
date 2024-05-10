@@ -15,7 +15,7 @@ def check_is_destructive(argv: list[str]) -> None:
 	
 	
 def delete_all() -> None:
-	for folder in listdir(c.RESOURCES_FP):
-		for file in listdir(folder):
-			remove(file)
+	for folder in [dir_ for dir_ in listdir(c.RESOURCES_FP) if dir_ != ".DS_Store"]:
+		for file in listdir(c.RESOURCES_FP + folder):
+			remove(c.RESOURCES_FP + folder + "/" + file)
 		

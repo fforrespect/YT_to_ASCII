@@ -2,7 +2,7 @@
 # VIDEO_URL: str = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 
 # -- F1 --
-# VIDEO_URL: str = "https://www.youtube.com/watch?v=VTAPL-xz7HY"
+VIDEO_URL: str = "https://www.youtube.com/watch?v=VTAPL-xz7HY"
 
 # -- 30 secs --
 # VIDEO_URL: str = "https://www.youtube.com/watch?v=0yZcDeVsj_Y"
@@ -11,7 +11,7 @@
 # VIDEO_URL: str = "https://www.youtube.com/watch?v=9HQzRxmr87s"
 
 # -- Road Work Ahead --
-VIDEO_URL: str = "https://www.youtube.com/watch?v=9sPthPleEKo"
+# VIDEO_URL: str = "https://www.youtube.com/watch?v=9sPthPleEKo"
 
 RESOURCES_FP: str = "../resources/"
 
@@ -30,6 +30,7 @@ DELIMITER: str = "ARBITRARY_DELIMITER"
 LOADING_BAR_FILL: str = '█'
 LOADING_BAR_SUFFIX: str = "%(index)d/%(max)d (%(percent).1f%%) - %(elapsed)ds elapsed (eta %(eta)ds)"
 
+FILL_CHAR: str = " "*2
 
 FPS: int
 SKIP: int = 2
