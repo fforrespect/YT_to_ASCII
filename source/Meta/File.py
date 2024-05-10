@@ -2,6 +2,7 @@ from os import remove, listdir
 
 from Meta import Constants as c, GlobalVars as gv
 
+
 def delete_if_extant(path: str) -> None:
 	try: remove(path)
 	except FileNotFoundError: pass
